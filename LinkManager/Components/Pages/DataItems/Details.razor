@@ -1,0 +1,73 @@
+@page "/dataitems/details/{id:int}"
+
+@using LinkManager.Data
+@using LinkManager.Models
+@inject ApplicationDbContext _context
+@inject NavigationManager NavigationManager
+
+<h3>Data Item Details</h3>
+
+@if (dataItem == null)
+{
+    <p><em>Loading...</em></p>
+}
+else
+{
+    <dl class="row">
+        <dt class="col-sm-2">Name</dt>
+        <dd class="col-sm-10">@dataItem.Name</dd>
+        <dt class="col-sm-2">Description</dt>
+        <dd class="col-sm-10">@dataItem.Description</dd>
+        <dt class="col-sm-2">Source System</dt>
+        <dd class="col-sm-10">@dataItem.SourceSystem</dd>
+        <dt class="col-sm-2">Target System</dt>
+        <dd class="col-sm-10">@dataItem.TargetSystem</dd>
+        <dt class="col-sm-2">Link Type</dt>
+        <dd class="col-sm-10">@dataItem.LinkType</dd>
+        <dt class="col-sm-2">Protocol</dt>
+        <dd class="col-sm-10">@dataItem.Protocol</dd>
+        <dt class="col-sm-2">Schedule Info</dt>
+        <dd class="col-sm-10">@dataItem.ScheduleInfo</dd>
+        <dt class="col-sm-2">Authentication Method</dt>
+        <dd class="col-sm-10">@dataItem.AuthenticationMethod</dd>
+        <dt class="col-sm-2">Endpoint URL</dt>
+        <dd class="col-sm-10">@dataItem.EndpointURL</dd>
+        <dt class="col-sm-2">Data Format</dt>
+        <dd class="col-sm-10">@dataItem.DataFormat</dd>
+        <dt class="col-sm-2">Status</dt>
+        <dd class="col-sm-10">@dataItem.Status</dd>
+        <dt class="col-sm-2">Version</dt>
+        <dd class="col-sm-10">@dataItem.Version</dd>
+        <dt class="col-sm-2">Last Mutation Date</dt>
+        <dd class="col-sm-10">@dataItem.LastMutationDate</dd>
+        <dt class="col-sm-2">Creation Date</dt>
+        <dd class="col-sm-10">@dataItem.CreationDate</dd>
+        <dt class="col-sm-2">Owner</dt>
+        <dd class="col-sm-10">@dataItem.Owner</dd>
+        <dt class="col-sm-2">Supplier</dt>
+        <dd class="col-sm-10">@dataItem.Supplier</dd>
+        <dt class="col-sm-2">Technical Management</dt>
+        <dd class="col-sm-10">@dataItem.TechnicalManagement</dd>
+        <dt class="col-sm-2">Document List ID</dt>
+        <dd class="col-sm-10">@dataItem.DocumentListID</dd>
+    </dl>
+    <div>
+        <a href="@($"/dataitems/edit/{dataItem.ID}")" class="btn btn-primary">Edit</a> |
+        <a href="@($"/dataitems/{dataItem.ID}/documents")" class="btn btn-info">View Documents</a> |
+        <a href="/dataitems" class="btn btn-link">Back to List</a>
+    </div>
+}
+
+@code {
+    [Parameter]
+    public int id { get; set; }
+
+    private DataItem dataItem = null!;
+
+    protected override async Task OnInitializedAsync()
+    {
+        dataItem = await _context.DataItems
+            .Include(d => d.DocumentList)
+            .FirstOrDefaultAsync(m => m.ID == id);
+    }
+}

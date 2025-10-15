@@ -1,0 +1,85 @@
+@page "/dataitems"
+
+@using LinkManager.Data
+@using LinkManager.Models
+@inject ApplicationDbContext _context
+@inject NavigationManager NavigationManager
+
+<h3>Data Items</h3>
+
+<p>
+    <a href="/dataitems/create">Create New</a>
+</p>
+@if (dataItems == null)
+{
+    <p><em>Loading...</em></p>
+}
+else
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Description</th>
+                <th>Source System</th>
+                <th>Target System</th>
+                <th>Link Type</th>
+                <th>Protocol</th>
+                <th>Schedule Info</th>
+                <th>Authentication Method</th>
+                <th>Endpoint URL</th>
+                <th>Data Format</th>
+                <th>Status</th>
+                <th>Version</th>
+                <th>Last Mutation Date</th>
+                <th>Creation Date</th>
+                <th>Owner</th>
+                <th>Supplier</th>
+                <th>Technical Management</th>
+                <th>Document List ID</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in dataItems)
+            {
+                <tr>
+                    <td>@item.Name</td>
+                    <td>@item.Description</td>
+                    <td>@item.SourceSystem</td>
+                    <td>@item.TargetSystem</td>
+                    <td>@item.LinkType</td>
+                    <td>@item.Protocol</td>
+                    <td>@item.ScheduleInfo</td>
+                    <td>@item.AuthenticationMethod</td>
+                    <td>@item.EndpointURL</td>
+                    <td>@item.DataFormat</td>
+                    <td>@item.Status</td>
+                    <td>@item.Version</td>
+                    <td>@item.LastMutationDate</td>
+                    <td>@item.CreationDate</td>
+                    <td>@item.Owner</td>
+                    <td>@item.Supplier</td>
+                    <td>@item.TechnicalManagement</td>
+                    <td>@item.DocumentListID</td>
+                    <td>
+                        <a href="@($"/dataitems/edit/{item.ID}")">Edit</a> |
+                        <a href="@($"/dataitems/details/{item.ID}")">Details</a> |
+                        <a href="@($"/dataitems/delete/{item.ID}")">Delete</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+
+@code {
+    private IList<DataItem> dataItems = null!;
+
+    protected override async Task OnInitializedAsync()
+    {
+        dataItems = await _context.DataItems
+            .Include(d => d.DocumentList)
+            .ToListAsync();
+    }
+}
