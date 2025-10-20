@@ -1,0 +1,43 @@
+@page "/documentlists"
+
+@using LinkManager.Data
+@using LinkManager.Models
+@inject ApplicationDbContext _context
+
+<h3>Document Lists</h3>
+
+@if (documentLists == null)
+{
+    <p><em>Loading...</em></p>
+}
+else
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in documentLists)
+            {
+                <tr>
+                    <td>@item.ID</td>
+                    <td>
+                        <a href="@($"/documentlists/details/{item.ID}")">Details</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+
+@code {
+    private IList<DocumentList> documentLists = null!;
+
+    protected override async Task OnInitializedAsync()
+    {
+        documentLists = await _context.DocumentLists.ToListAsync();
+    }
+}

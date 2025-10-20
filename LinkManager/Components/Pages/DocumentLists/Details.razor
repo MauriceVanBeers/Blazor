@@ -1,0 +1,63 @@
+@page "/documentlists/details/{id:int}"
+
+@using LinkManager.Data
+@using LinkManager.Models
+@inject ApplicationDbContext _context
+
+<h3>Document List Details</h3>
+
+@if (documentList == null)
+{
+    <p><em>Loading...</em></p>
+}
+else
+{
+    <h4>Document List ID: @documentList.ID</h4>
+    <hr />
+    <h5>Data Items</h5>
+    @if(documentList.DataItems != null && documentList.DataItems.Any())
+    {
+        <ul>
+            @foreach(var dataItem in documentList.DataItems)
+            {
+                <li><a href="@($"/dataitems/details/{dataItem.ID}")">@dataItem.Name</a></li>
+            }
+        </ul>
+    }
+    else
+    {
+        <p>No data items associated with this document list.</p>
+    }
+
+    <h5>Documents</h5>
+    @if(documentList.Documents != null && documentList.Documents.Any())
+    {
+        <ul>
+            @foreach(var document in documentList.Documents)
+            {
+                <li><a href="@document.Url" target="_blank">@document.Description</a></li>
+            }
+        </ul>
+    }
+    else
+    {
+        <p>No documents associated with this document list.</p>
+    }
+
+    <a href="/documentlists" class="btn btn-link">Back to List</a>
+}
+
+@code {
+    [Parameter]
+    public int id { get; set; }
+
+    private DocumentList? documentList;
+
+    protected override async Task OnInitializedAsync()
+    {
+        documentList = await _context.DocumentLists
+            .Include(dl => dl.DataItems)
+            .Include(dl => dl.Documents)
+            .FirstOrDefaultAsync(m => m.ID == id);
+    }
+}

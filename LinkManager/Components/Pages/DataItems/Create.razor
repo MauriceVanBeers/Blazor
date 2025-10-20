@@ -89,6 +89,7 @@
 
     private async Task HandleValidSubmit()
     {
+        dataItem.DocumentList = new Models.DocumentList();
         _context.DataItems.Add(dataItem);
         await _context.SaveChangesAsync();
         NavigationManager.NavigateTo("/dataitems");

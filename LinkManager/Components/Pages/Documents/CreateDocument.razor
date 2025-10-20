@@ -39,9 +39,8 @@
             {
                 dataItem.DocumentList = new Models.DocumentList();
                 _context.DocumentLists.Add(dataItem.DocumentList);
-                await _context.SaveChangesAsync();
             }
-            document.DocumentListID = dataItem.DocumentList.ID;
+            document.DocumentListID = dataItem.DocumentListID;
             _context.Documents.Add(document);
             await _context.SaveChangesAsync();
         }
