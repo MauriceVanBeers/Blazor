@@ -18,73 +18,75 @@ else
         <ValidationSummary />
 
         <input type="hidden" @bind-value="dataItem.ID" />
-        <div class="form-group">
-            <label for="name">Name</label>
-            <InputText id="name" @bind-Value="dataItem.Name" class="form-control" />
-        </div>
-        <div class="form-group">
-            <label for="description">Description</label>
-            <InputText id="description" @bind-Value="dataItem.Description" class="form-control" />
-        </div>
-        <div class="form-group">
-            <label for="sourceSystem">Source System</label>
-            <InputText id="sourceSystem" @bind-Value="dataItem.SourceSystem" class="form-control" />
-        </div>
-        <div class="form-group">
-            <label for="targetSystem">Target System</label>
-            <InputText id="targetSystem" @bind-Value="dataItem.TargetSystem" class="form-control" />
-        </div>
-        <div class="form-group">
-            <label for="linkType">Link Type</label>
-            <InputText id="linkType" @bind-Value="dataItem.LinkType" class="form-control" />
-        </div>
-        <div class="form-group">
-            <label for="protocol">Protocol</label>
-            <InputText id="protocol" @bind-Value="dataItem.Protocol" class="form-control" />
-        </div>
-        <div class="form-group">
-            <label for="scheduleInfo">Schedule Info</label>
-            <InputText id="scheduleInfo" @bind-Value="dataItem.ScheduleInfo" class="form-control" />
-        </div>
-        <div class="form-group">
-            <label for="authenticationMethod">Authentication Method</label>
-            <InputText id="authenticationMethod" @bind-Value="dataItem.AuthenticationMethod" class="form-control" />
-        </div>
-        <div class="form-group">
-            <label for="endpointURL">Endpoint URL</label>
-            <InputText id="endpointURL" @bind-Value="dataItem.EndpointURL" class="form-control" />
-        </div>
-        <div class="form-group">
-            <label for="dataFormat">Data Format</label>
-            <InputText id="dataFormat" @bind-Value="dataItem.DataFormat" class="form-control" />
-        </div>
-        <div class="form-group">
-            <label for="status">Status</label>
-            <InputText id="status" @bind-Value="dataItem.Status" class="form-control" />
-        </div>
-        <div class="form-group">
-            <label for="version">Version</label>
-            <InputText id="version" @bind-Value="dataItem.Version" class="form-control" />
-        </div>
-        <div class="form-group">
-            <label for="lastMutationDate">Last Mutation Date</label>
-            <InputDate id="lastMutationDate" @bind-Value="dataItem.LastMutationDate" class="form-control" />
-        </div>
-        <div class="form-group">
-            <label for="creationDate">Creation Date</label>
-            <InputDate id="creationDate" @bind-Value="dataItem.CreationDate" class="form-control" />
-        </div>
-        <div class="form-group">
-            <label for="owner">Owner</label>
-            <InputText id="owner" @bind-Value="dataItem.Owner" class="form-control" />
-        </div>
-        <div class="form-group">
-            <label for="supplier">Supplier</label>
-            <InputText id="supplier" @bind-Value="dataItem.Supplier" class="form-control" />
-        </div>
-        <div class="form-group">
-            <label for="technicalManagement">Technical Management</label>
-            <InputText id="technicalManagement" @bind-Value="dataItem.TechnicalManagement" class="form-control" />
+        <div class="form-grid">
+            <div class="form-group">
+                <label for="name">Name</label>
+                <InputText id="name" @bind-Value="dataItem.Name" class="form-control" />
+            </div>
+            <div class="form-group">
+                <label for="description">Description</label>
+                <InputText id="description" @bind-Value="dataItem.Description" class="form-control" />
+            </div>
+            <div class="form-group">
+                <label for="sourceSystem">Source System</label>
+                <InputText id="sourceSystem" @bind-Value="dataItem.SourceSystem" class="form-control" />
+            </div>
+            <div class="form-group">
+                <label for="targetSystem">Target System</label>
+                <InputText id="targetSystem" @bind-Value="dataItem.TargetSystem" class="form-control" />
+            </div>
+            <div class="form-group">
+                <label for="linkType">Link Type</label>
+                <InputText id="linkType" @bind-Value="dataItem.LinkType" class="form-control" />
+            </div>
+            <div class="form-group">
+                <label for="protocol">Protocol</label>
+                <InputText id="protocol" @bind-Value="dataItem.Protocol" class="form-control" />
+            </div>
+            <div class="form-group">
+                <label for="scheduleInfo">Schedule Info</label>
+                <InputText id="scheduleInfo" @bind-Value="dataItem.ScheduleInfo" class="form-control" />
+            </div>
+            <div class="form-group">
+                <label for="authenticationMethod">Authentication Method</label>
+                <InputText id="authenticationMethod" @bind-Value="dataItem.AuthenticationMethod" class="form-control" />
+            </div>
+            <div class="form-group">
+                <label for="endpointURL">Endpoint URL</label>
+                <InputText id="endpointURL" @bind-Value="dataItem.EndpointURL" class="form-control" />
+            </div>
+            <div class="form-group">
+                <label for="dataFormat">Data Format</label>
+                <InputText id="dataFormat" @bind-Value="dataItem.DataFormat" class="form-control" />
+            </div>
+            <div class="form-group">
+                <label for="status">Status</label>
+                <InputText id="status" @bind-Value="dataItem.Status" class="form-control" />
+            </div>
+            <div class="form-group">
+                <label for="version">Version</label>
+                <InputText id="version" @bind-Value="dataItem.Version" class="form-control" />
+            </div>
+            <div class="form-group">
+                <label for="lastMutationDate">Last Mutation Date</label>
+                <InputDate id="lastMutationDate" @bind-Value="dataItem.LastMutationDate" class="form-control" />
+            </div>
+            <div class="form-group">
+                <label for="creationDate">Creation Date</label>
+                <InputDate id="creationDate" @bind-Value="dataItem.CreationDate" class="form-control" />
+            </div>
+            <div class="form-group">
+                <label for="owner">Owner</label>
+                <InputText id="owner" @bind-Value="dataItem.Owner" class="form-control" />
+            </div>
+            <div class="form-group">
+                <label for="supplier">Supplier</label>
+                <InputText id="supplier" @bind-Value="dataItem.Supplier" class="form-control" />
+            </div>
+            <div class="form-group">
+                <label for="technicalManagement">Technical Management</label>
+                <InputText id="technicalManagement" @bind-Value="dataItem.TechnicalManagement" class="form-control" />
+            </div>
         </div>
 
         <button type="submit" class="btn btn-primary">Save</button>
@@ -105,6 +107,7 @@ else
 
     private async Task HandleValidSubmit()
     {
+        dataItem.LastMutationDate = DateTime.Now;
         _context.DataItems.Update(dataItem);
         await _context.SaveChangesAsync();
         NavigationManager.NavigateTo("/dataitems");

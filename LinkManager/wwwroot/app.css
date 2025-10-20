@@ -21,13 +21,34 @@ a {
 }
 
 .table {
-    background-color: var(--primary-color);
+    width: 100%;
+    margin-bottom: 1rem;
     color: var(--text-color);
+    background-color: var(--primary-color);
+    border-collapse: collapse;
+    border-radius: 8px;
+    overflow: hidden;
+    font-size: 0.9rem;
 }
 
-.table th, .table td {
-    border-color: var(--border-color);
-}
+    .table th,
+    .table td {
+        padding: 0.8rem 1rem;
+        vertical-align: middle;
+        border-top: 1px solid var(--border-color);
+        text-align: left;
+    }
+
+    .table thead th {
+        vertical-align: bottom;
+        border-bottom: 2px solid var(--border-color);
+        background-color: #4a4a4a;
+        font-weight: 600;
+    }
+
+    .table tbody tr:hover {
+        background-color: rgba(255, 255, 255, 0.05);
+    }
 
 .form-control {
     background-color: var(--primary-color);
@@ -96,4 +117,20 @@ main {
 
 .validation-message {
     color: var(--error-color);
+}
+
+.form-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1rem;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-group label {
+    margin-bottom: 0.5rem;
+    font-weight: 600;
 }
